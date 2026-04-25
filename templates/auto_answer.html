@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="answer-card">
+        <p>Фамилия: {{ dict_.surname }}</p>
+        <p>Имя: {{ dict_.name }}</p>
+        <p>Образование: {{ dict_.education }}</p>
+        <p>Профессия: {{ dict_.profession }}</p>
+        <p>Пол: {{ dict_.sex }}</p>
+        <p>Мотивация: {{ dict_.motivation }}</p>
+        <p>Готовы остаться на Марсе? {{ "Да" if dict_.ready else "Нет" }}</p>
+    </div>
+{% endblock %}

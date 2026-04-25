@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h2>Оформление каюты</h2>
+</div>
+<div style="display: flex; justify-content: center; padding-left: 20px;">
+    <div>
+        <div style="background-color: gray; text-align: center;">Цвет стен</div>
+        <div style="width: 500px; height: 600px; background-color: {{ color }};"></div>
+    </div>
+    <div>
+        <div style="background-color: gray; text-align: center;">Эмблема</div>
+        <img src="{{ url_for('static', filename='img/' + img_name) }}" width="300">
+    </div>
+</div>
+{% endblock %}
