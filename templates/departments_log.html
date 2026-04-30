@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2>Departments log</h2>
+<div class="add-job-container">
+    <a href="/add_department" class="btn btn-secondary">Добавить</a>
+    <a href="/works_log" class="btn btn-secondary">Back to jobs</a>
+</div>
+{% if departments %}
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Chief</th>
+        <th>Members</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for department in departments %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ department.title }}</td>
+        <td>{{ department.chief }}</td>
+        <td>{{ department.members }}</td>
+        <td>{{ department.email }}</td>
+        <td>
+            {% if current_user.is_authenticated and (current_user.id == department.chief or current_user.id == 1) %}
+            <div>
+                <a href="/edit_department/{{ department.id }}" class="btn btn-warning">
+                    Изменить
+                </a>
+                <a href="/delete_department/{{ department.id }}" class="btn btn-danger">
+                    Удалить
+                </a>
+            </div>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No departments found.</p>
+{% endif %}
+{% endblock %}

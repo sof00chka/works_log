@@ -81,6 +81,12 @@ th {
     text-align: left;
 }
 
+.add-job-container {
+    max-width: 600px;
+    margin: 0 auto 15px auto;
+    text-align: left;
+}
+
 .action-buttons {
     margin: 12px 0;
 }

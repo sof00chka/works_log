@@ -2,7 +2,10 @@
 
 {% block content %}
 <h2>Works log</h2>
-
+<div class="add-job-container">
+    <a href="/add_job" class="btn btn-secondary">Добавить</a>
+    <a href="/departments" class="btn btn-secondary">Go to departments</a>
+</div>
 {% if jobs %}
 <table class="table table-bordered">
     <thead>
@@ -47,6 +50,5 @@
 
 {% if current_user.is_authenticated %}
 <br>
-<a href="/add_job" class="btn btn-secondary">Добавить</a>
 {% endif %}
 {% endblock %}
