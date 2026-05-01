@@ -2,10 +2,11 @@
 
 {% block content %}
 <h2>Works log</h2>
+{% if current_user.is_authenticated %}
 <div class="add-job-container">
     <a href="/add_job" class="btn btn-secondary">Добавить</a>
-    <a href="/departments" class="btn btn-secondary">Go to departments</a>
 </div>
+{% endif %}
 {% if jobs %}
 <table class="table table-bordered">
     <thead>
@@ -15,6 +16,7 @@
         <th>Team leader</th>
         <th>Duration</th>
         <th>List of collaborators</th>
+        <th>Category</th>
         <th>Is finished</th>
         <th>Actions</th>
     </tr>
@@ -27,6 +29,11 @@
         <td>{{ job.team_leader }}</td>
         <td>{{ job.work_size }} hours</td>
         <td>{{ job.collaborators }}</td>
+        <td>
+            {% for category in job.categories %}
+                {{ category.name }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </td>
         <td>{{ "Is finished" if job.is_finished else "Is not finished" }}</td>
         <td>
             {% if current_user.is_authenticated and (current_user.id == job.team_leader or current_user.id == 1) %}
