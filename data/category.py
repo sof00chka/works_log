@@ -1,5 +1,7 @@
 import sqlalchemy
 from sqlalchemy import orm
+from sqlalchemy_serializer import SerializerMixin
+
 from data.db_session import SqlAlchemyBase
 
 association_table = sqlalchemy.Table(
@@ -11,7 +13,7 @@ association_table = sqlalchemy.Table(
                       sqlalchemy.ForeignKey('category.id'))
 )
 
-class Category(SqlAlchemyBase):
+class Category(SqlAlchemyBase, SerializerMixin):
     __tablename__ = 'category'
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
                            autoincrement=True)
